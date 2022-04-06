@@ -16,15 +16,16 @@ body {
     grid-gap: 0px;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
-    width: 40vw;
-    height: auto;
+    width: 500px;
+    height: 500px;
+    min-width: 200px;
+    min-height: 200px;
     align-self: center;
     border: 3px solid rgb(0, 141, 129);
-    flex-shrink: 1;
 }
 
 .grid-item {
-    padding: 1em;
+    padding: auto;
     border: 0px solid rgb(0, 0, 0);
     background-color: white;
 }
@@ -46,7 +47,7 @@ body {
 
 h1 {
     margin: 16px 0;
-    color: rgb(41, 30, 30);
+    color: rgb(87, 58, 58);
 }
 
 button,

@@ -1,6 +1,14 @@
 const container = document.querySelector(".container")
 let gridItems = ""
 
+// initialize 16px x 16px grid
+makeRows(16, 16);
+
+//start button
+const startBtn = document.querySelector("#start").addEventListener("click", hover)
+
+
+// creates grid
 function makeRows(rows, cols) {
     container.style.setProperty('--grid-rows', rows);
     container.style.setProperty('--grid-cols', cols);
@@ -11,28 +19,38 @@ function makeRows(rows, cols) {
     gridItems = document.querySelectorAll(".grid-item")
 };
 
+// query button for clear
+const clearBtn = document.querySelector("#clear").addEventListener("click", clear)
 
-makeRows(16, 16);
-// add event listener for hover over grid items
-
-gridItems.forEach(item => {
-    item.addEventListener("mouseover", function (e) {
-        item.classList.add("draw")
-    })
-
-});
-
-// query buttons for clear and color
-const clearBtn = document.querySelector("#clear")
-// clear sketch field 
+// clear function
 function clear() {
-    console.log("click")
     gridItems.forEach(item => {
         item.classList.remove("draw")
     })
 }
 
-clearBtn.addEventListener("click", clear)
+//get solution select
+const solution = document.querySelector("#solution")
+// listen to change events and apply
+solution.addEventListener("change", (e) => {
+    removeGrid()
+    makeRows(e.target.value, e.target.value)
+    hover()
+})
 
-//get solution and apply
-const solutions = document.querySelectorAll("option")
+// remove grid function
+function removeGrid() {
+    for (const grid of gridItems) {
+        grid.remove()
+    }
+}
+// start drawing function
+function hover() {
+    gridItems.forEach(item => {
+        item.addEventListener("mouseover", function (e) {
+            item.classList.add("draw")
+        })
+
+    });
+
+}
